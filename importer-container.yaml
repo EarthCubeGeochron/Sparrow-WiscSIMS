@@ -1,0 +1,3 @@
+services:
+  importer:
+    build: importer
