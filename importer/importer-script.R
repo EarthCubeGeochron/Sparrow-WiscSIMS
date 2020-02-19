@@ -152,15 +152,26 @@ AnalysisFrame <- function(Input){
                  )
 
   return(Output)
+}
 
-CompiledOutput <- data.frame(Session=FileName, Analysis=)
+# CompiledOutput <- data.frame(Session=FileName, Analysis=)
+#
+# CompiledOutput$Analysis <- list(Output)
+#
+#
+# Output<-toJSON(Output)
+# Output<-prettify(Output)
 
-CompiledOutput$Analysis <- list(Output)
+testJson <- list(
+  date="2020-01-01T00:00:00",
+  sample=list(name='Test sample')
+)
 
+request <- list(
+  filename=NA,
+  data=testJson
+)
 
-Output<-toJSON(Output)
-Output<-prettify(Output)
+print(toJSON(testJson, auto_unbox=TRUE, pretty=TRUE))
 
-PUSH(url=, body=upload_file(Output), encode = "json")
-
-print(Output)
+PUT(url="http://backend:5000/api/v1/import-data/session", body=request, encode = "json")

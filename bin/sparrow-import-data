@@ -16,6 +16,7 @@ import_pipeline="${0:h:h:r}"
 #   -v "$import_pipeline:/pipeline" \
 #   backend \
 #   python3 -m pipeline $@
+sparrow compose build importer
 sparrow compose run \
   -v "$SPARROW_DATA_DIR:/Test-Data:ro" \
   importer Rscript importer-script.R
