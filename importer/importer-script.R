@@ -154,13 +154,19 @@ AnalysisFrame <- function(Input){
   return(Output)
 }
 
-# CompiledOutput <- data.frame(Session=FileName, Analysis=)
-#
-# CompiledOutput$Analysis <- list(Output)
-#
-#
-# Output<-toJSON(Output)
-# Output<-prettify(Output)
+
+Output2 <- list()
+
+for(i in 1:nrow(Output)){
+
+  Output2<-append(Output2, AnalysisFrame(Output[i,]))
+
+}
+
+CompiledOutput <- list(filename=FileName,
+                        data=Output2)
+
+JSONOUTPUT <- toJSON(CompiledOutput, auto_unbox=TRUE, pretty=TRUE)
 
 testJson <- list(
   date="2020-01-01T00:00:00",
@@ -174,4 +180,6 @@ request <- list(
 
 print(toJSON(testJson, auto_unbox=TRUE, pretty=TRUE))
 
-PUT(url="http://backend:5000/api/v1/import-data/session", body=request, encode = "json")
+# PUT(url="http://backend:5000/api/v1/import-data/session", body=request, encode = "json")
+
+PUT(url="http://backend:5000/api/v1/import-data/session", body=JSONOUTPUT, encode = "json")
