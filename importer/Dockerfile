@@ -2,6 +2,7 @@ FROM r-base
 LABEL version="1.1"
 
 RUN R -e "install.packages(c('readxl', 'plyr'), dependencies=TRUE, repos='http://cran.rstudio.com')"
+RUN R -e "install.packages(c('jsonlite'), dependencies=TRUE, repos='http://cran.rstudio.com')"
 
 COPY *.R /code/
 

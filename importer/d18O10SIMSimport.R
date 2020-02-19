@@ -13,7 +13,7 @@ d18O10SIMSimport <- function(InputFile, PlugNum=NA){
   #   ErrorList:  Output character string listing errors encountered with column names
 
 #### For troubleshooting...
-  #InputFile <- file.choose()
+  #InputFile <- fi le.choose()
   #PlugNum <- NA
   ####Test to see if input file is a proper Excel file with d18O in name ####
 
