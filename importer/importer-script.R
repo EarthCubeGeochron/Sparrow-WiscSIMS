@@ -12,9 +12,9 @@ AnalysisFrame <- function(Input){
   ####Function to create nested structure from parsed
   #   excell files in R
 
-  File <- Input$File
-
-  Comment <- Input$Comment
+  # File <- Input$File
+  #
+  # Comment <- Input$Comment
 
   d18OVSMOW <- list(value = Input$d18OVSMOW,
                     type = list(parameter = "d18OVSMOWxls",
@@ -121,8 +121,7 @@ AnalysisFrame <- function(Input){
                      type = list(parameter = "STDd18O",
                                  unit = "permille"))
 
-  Output <- list(File,
-                 Comment,
+  DatumList <- list(
                  d18OVSMOW,
                  SD2ext,
                  IMF,
@@ -149,36 +148,56 @@ AnalysisFrame <- function(Input){
                  BRACKET2SD,
                  STDd18O,
                  STDd18Opdb
-                 )
+               )
 
-  return(Output)
+  # Analysis <- list(
+  #   name="d18O measurement",
+  #   datum=DatumList
+  # )
+
+  filtered = filter(DatumList,  function(item){
+    return(!is.na(item$value))
+  })
+
+  return(filtered)
 }
 
 
 Output2 <- list()
 
-for(i in 1:nrow(Output)){
-
+for(i in 21:22){
   Output2<-append(Output2, AnalysisFrame(Output[i,]))
-
 }
 
-CompiledOutput <- list(filename=FileName,
-                        data=Output2)
+Output2 <- list(name="d18O measurement",
+                datum = Output2)
 
-JSONOUTPUT <- toJSON(CompiledOutput, auto_unbox=TRUE, pretty=TRUE)
-
-testJson <- list(
+Session = list(
+  sample=list(name='Test sample'),
   date="2020-01-01T00:00:00",
-  sample=list(name='Test sample')
+  analysis=Output2
 )
+
+
+
+# CompiledOutput <- list(filename=FileName,
+#                         data=Output2)
+
+#JSONOUTPUT <- toJSON(Session, auto_unbox=TRUE, pretty=TRUE)
+
+# testJson <- list(
+#   date="2020-01-01T00:00:00",
+#   sample=list(name='Test sample')
+# )
 
 request <- list(
   filename=NA,
-  data=testJson
+  data=Session
 )
 
-print(toJSON(testJson, auto_unbox=TRUE, pretty=TRUE))
+JSONOUTPUT <- toJSON(request, auto_unbox=TRUE, pretty=TRUE, na="null")
+
+print(JSONOUTPUT)
 
 # PUT(url="http://backend:5000/api/v1/import-data/session", body=request, encode = "json")
 
