@@ -3,7 +3,7 @@ LABEL version="1.1"
 
 RUN R -e "install.packages(c('readxl', 'plyr'), dependencies=TRUE, repos='http://cran.rstudio.com')"
 
-COPY d18O10SIMSimport.R /code/
+COPY *.R /code/
 
 WORKDIR /code/
 

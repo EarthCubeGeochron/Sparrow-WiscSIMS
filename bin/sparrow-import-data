@@ -18,6 +18,6 @@ import_pipeline="${0:h:h:r}"
 #   python3 -m pipeline $@
 sparrow compose run \
   -v "$SPARROW_DATA_DIR:/Test-Data:ro" \
-  importer R
+  importer Rscript importer-script.R
 
-echo "This is empty right now!"
+#echo "This is empty right now!"
