@@ -69,7 +69,7 @@ AnalysisFrame <- function(Input){
                             unit = "bits"))
   DTFAY <- list(value = Input$DTFAY,
                 type = list(parameter = "DTFAY",
-                            unit = "bits"))
+                            unit = "bits1"))
   Mass <- list(value = Input$Mass,
                type = list(parameter = "Mass",
                            unit = "???"))
@@ -122,32 +122,32 @@ AnalysisFrame <- function(Input){
                                  unit = "permille"))
 
   DatumList <- list(
-                 d18OVSMOW,
-                 SD2ext,
-                 IMF,
-                 d18Omeas,
-                 SE2int,
-                 O16cps,
-                 `IP(nA)`,
-                 Yield,
-                 #DATETIME,
-                 AnalysisLength,
-                 X,
-                 Y,
-                 DTFAX,
-                 DTFAY,
-                 Mass,
-                 OHO,
-                 #MATERIAL,
-                 GROUPNUM,
-                 #GUESS.SAMP,
-                 #MOUNTNUM,
-                 UNIQUEGRP,
-                 REL_YIELD,
-                 REL_OHO,
-                 BRACKET2SD,
-                 STDd18O,
-                 STDd18Opdb
+                 d18OVSMOW
+                 # SD2ext,
+                 # IMF,
+                 # d18Omeas,
+                 # SE2int,
+                 # O16cps,
+                 # `IP(nA)`,
+                 # Yield,
+                 # #DATETIME,
+                 # AnalysisLength,
+                 # X,
+                 # Y,
+                 # DTFAX,
+                 # DTFAY,
+                 # Mass,
+                 # OHO,
+                 # #MATERIAL,
+                 # GROUPNUM,
+                 # #GUESS.SAMP,
+                 # #MOUNTNUM,
+                 # UNIQUEGRP,
+                 # REL_YIELD,
+                 # REL_OHO,
+                 # BRACKET2SD,
+                 # STDd18O,
+                 # STDd18Opdb
                )
 
   # Analysis <- list(
@@ -179,9 +179,9 @@ AnalysisFrame <- function(Input){
 analysisList <- list()
 
 ix <- 1
-for(i in 2:3){
+for(i in 2:length(Output)){
   datumList <- AnalysisFrame(Output[i,])
-  analysisList[[ix]] <- list(name="d18O measurement",
+  analysisList[[ix]] <- list(analysis_name="d18O measurement",
                   datum = datumList)
   ix <- ix + 1
 }
@@ -216,4 +216,4 @@ print(JSONOUTPUT)
 
 # PUT(url="http://backend:5000/api/v1/import-data/session", body=request, encode = "json")
 
-PUT(url="http://backend:5000/api/v1/import-data/session", body=JSONOUTPUT, encode = "json")
+PUT(url="http://backend:5000/api/v1/import-data/session", body=request, encode = "json")
