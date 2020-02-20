@@ -130,7 +130,7 @@ AnalysisFrame <- function(Input){
                  O16cps,
                  `IP(nA)`,
                  Yield,
-                 DATETIME,
+                 #DATETIME,
                  AnalysisLength,
                  X,
                  Y,
@@ -138,10 +138,10 @@ AnalysisFrame <- function(Input){
                  DTFAY,
                  Mass,
                  OHO,
-                 MATERIAL,
+                 #MATERIAL,
                  GROUPNUM,
-                 GUESS.SAMP,
-                 MOUNTNUM,
+                 #GUESS.SAMP,
+                 #MOUNTNUM,
                  UNIQUEGRP,
                  REL_YIELD,
                  REL_OHO,
@@ -155,27 +155,42 @@ AnalysisFrame <- function(Input){
   #   datum=DatumList
   # )
 
-  filtered = filter(DatumList,  function(item){
-    return(!is.na(item$value))
-  })
+  ix <- 1
+  fout <- list()
+  for(i in 1:length(DatumList)) {
+    k <- DatumList[[i]]
+    if(!is.na(DatumList[[i]]$value)) {
+      fout[[ix]] <- DatumList[[i]]
+      ix <- ix + 1
+    }
+  }
 
-  return(filtered)
+  #sapply(DatumList, function(x) print(x[[1]]["value"]))
+  # sapply(DatumList, function(x) print(x[[1]]$value))
+  #
+  # filtered <- filter(DatumList,  function(item){
+  #   return(Negate(is.na(item$value)))
+  # })
+
+  return(fout)
 }
 
 
-Output2 <- list()
+analysisList <- list()
 
-for(i in 21:22){
-  Output2<-append(Output2, AnalysisFrame(Output[i,]))
+ix <- 1
+for(i in 2:3){
+  datumList <- AnalysisFrame(Output[i,])
+  analysisList[[ix]] <- list(name="d18O measurement",
+                  datum = datumList)
+  ix <- ix + 1
 }
-
-Output2 <- list(name="d18O measurement",
-                datum = Output2)
 
 Session = list(
+  name="Test session",
   sample=list(name='Test sample'),
   date="2020-01-01T00:00:00",
-  analysis=Output2
+  analysis=analysisList
 )
 
 
