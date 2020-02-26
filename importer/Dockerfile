@@ -6,7 +6,11 @@ RUN R -e "install.packages(c('jsonlite'), dependencies=TRUE, repos='http://cran.
 
 RUN apt-get update && apt-get install libssl-dev libcurl4-openssl-dev
 
+RUN apt-get update && apt-get install -y libxml2-dev
+
+
 RUN R -e "install.packages('httr')"
+RUN R -e "install.packages(c('rlist','xml2'))"
 
 COPY *.R /code/
 

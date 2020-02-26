@@ -155,6 +155,36 @@ AnalysisFrame <- function(Input){
   #   datum=DatumList
   # )
 
+
+  # Output2 <- list()
+  #
+  # for(i in 35:35){
+  #
+  #   Output2<-list.append(Output2, AnalysisFrame(Output[i,]))
+  #
+  # }
+  #
+  # CompiledOutput <- list(filename=FileName,
+  #                         data=list(datum = Output2))
+  #
+  # JSONOUTPUT <- toJSON(CompiledOutput, auto_unbox=TRUE, pretty=TRUE)
+  #
+  # testJson <- list(
+  #   date="2020-01-01T00:00:00",
+  #   sample=list(name='Test sample')
+  # )
+  #
+  # request <- list(
+  #   filename=NA,
+  #   data=testJson
+  # )
+  #
+  # print(JSONOUTPUT)
+  #
+  # # PUT(url="http://backend:5000/api/v1/import-data/session", body=request, encode = "json")
+  #
+  # PUT(url="http://backend:5000/api/v1/import-data/session", body=CompiledOutput, encode = "json")
+
   ix <- 1
   fout <- list()
   for(i in 1:length(DatumList)) {
