@@ -69,7 +69,7 @@ AnalysisFrame <- function(Input){
                             unit = "bits"))
   DTFAY <- list(value = Input$DTFAY,
                 type = list(parameter = "DTFAY",
-                            unit = "bits1"))
+                            unit = "bits"))
   Mass <- list(value = Input$Mass,
                type = list(parameter = "Mass",
                            unit = "???"))
@@ -122,32 +122,32 @@ AnalysisFrame <- function(Input){
                                  unit = "permille"))
 
   DatumList <- list(
-                 d18OVSMOW
-                 # SD2ext,
-                 # IMF,
-                 # d18Omeas,
-                 # SE2int,
-                 # O16cps,
-                 # `IP(nA)`,
-                 # Yield,
-                 # #DATETIME,
-                 # AnalysisLength,
-                 # X,
-                 # Y,
-                 # DTFAX,
-                 # DTFAY,
-                 # Mass,
-                 # OHO,
-                 # #MATERIAL,
-                 # GROUPNUM,
-                 # #GUESS.SAMP,
-                 # #MOUNTNUM,
-                 # UNIQUEGRP,
-                 # REL_YIELD,
-                 # REL_OHO,
-                 # BRACKET2SD,
-                 # STDd18O,
-                 # STDd18Opdb
+                 d18OVSMOW,
+                 SD2ext,
+                 IMF,
+                 d18Omeas,
+                 SE2int,
+                 O16cps,
+                 `IP(nA)`,
+                 Yield,
+                 #DATETIME,
+                 AnalysisLength,
+                 X,
+                 Y,
+                 DTFAX,
+                 DTFAY,
+                 Mass,
+                 OHO,
+                 #MATERIAL,
+                 GROUPNUM,
+                 #GUESS.SAMP,
+                 #MOUNTNUM,
+                 UNIQUEGRP,
+                 REL_YIELD,
+                 REL_OHO,
+                 BRACKET2SD,
+                 STDd18O,
+                 STDd18Opdb
                )
 
   # Analysis <- list(
@@ -179,7 +179,7 @@ AnalysisFrame <- function(Input){
 analysisList <- list()
 
 ix <- 1
-for(i in 2:length(Output)){
+for(i in 10:10){
   datumList <- AnalysisFrame(Output[i,])
   analysisList[[ix]] <- list(analysis_name="d18O measurement",
                   datum = datumList)
@@ -187,8 +187,8 @@ for(i in 2:length(Output)){
 }
 
 Session = list(
-  name="Test session",
-  sample=list(name='Test sample'),
+  name="Test session 2",
+  sample=list(name='J-125=85630'),
   date="2020-01-01T00:00:00",
   analysis=analysisList
 )
