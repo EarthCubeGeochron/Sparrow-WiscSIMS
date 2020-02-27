@@ -97,9 +97,9 @@ AnalysisFrame <- function(Input){
                    type = list(parameter = "GROUPNUM",
                                unit = "GuessGroup"))
 
-  UNIQUEGRP <- list(value = Input$DTFAX,
-                    type = list(parameter = "DTFAX",
-                                unit = "bits"))
+  UNIQUEGRP <- list(value = Input$UNIQUEGRP,
+                    type = list(parameter = "UNIQUEGRP",
+                                unit = "UniqueGrp"))
 
   REL_YIELD <- list(value = Input$REL_YIELD,
                     type = list(parameter = "REL_YIELD",
@@ -139,10 +139,10 @@ AnalysisFrame <- function(Input){
                  Mass,
                  OHO,
                  #MATERIAL,
-                 GROUPNUM,
+                 #GROUPNUM,
                  #GUESS.SAMP,
                  #MOUNTNUM,
-                 UNIQUEGRP,
+                 #UNIQUEGRP,
                  REL_YIELD,
                  REL_OHO,
                  BRACKET2SD,
@@ -219,7 +219,7 @@ for(i in 10:10){
 Session = list(
   name="Test session 2",
   sample=list(name='J-125=85630'),
-  date="2020-01-01T00:00:00",
+  date="2020-01-01T00:00:40",
   analysis=analysisList
 )
 
