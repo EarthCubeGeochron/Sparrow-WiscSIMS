@@ -209,7 +209,7 @@ AnalysisFrame <- function(Input){
 analysisList <- list()
 
 ix <- 1
-for(i in 10:10){
+for(i in 10:100){
   datumList <- AnalysisFrame(Output[i,])
   analysisList[[ix]] <- list(analysis_name="d18O measurement",
                   datum = datumList)
