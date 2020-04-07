@@ -1,3 +1,6 @@
 [submodule "Sparrow"]
 	path = Sparrow
 	url = https://github.com/EarthCubeGeochron/Sparrow
+[submodule "WiscSIMSDataExtractor"]
+	path = WiscSIMSDataExtractor
+	url = https://github.com/thefallingduck/WiscSIMSDataExtractor.git
