@@ -2,5 +2,5 @@
 	path = Sparrow
 	url = https://github.com/EarthCubeGeochron/Sparrow
 [submodule "WiscSIMSDataExtractor"]
-	path = WiscSIMSDataExtractor
+	path = importer/WiscSIMSDataExtractor
 	url = https://github.com/thefallingduck/WiscSIMSDataExtractor.git
