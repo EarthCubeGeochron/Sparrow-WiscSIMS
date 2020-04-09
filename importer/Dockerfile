@@ -4,7 +4,7 @@ LABEL version="1.1"
 RUN R -e "install.packages(c('readxl', 'plyr'), dependencies=TRUE, repos='http://cran.rstudio.com')"
 RUN R -e "install.packages(c('jsonlite'), dependencies=TRUE, repos='http://cran.rstudio.com')"
 
-RUN apt-get update && apt-get install libssl-dev libcurl4-openssl-dev
+RUN apt-get update && apt-get install libssl-dev libcurl4-openssl-dev -y
 
 RUN apt-get update && apt-get install -y libxml2-dev
 
