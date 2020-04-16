@@ -13,6 +13,7 @@ RUN R -e "install.packages('httr')"
 RUN R -e "install.packages(c('rlist','xml2'))"
 
 COPY *.R /code/
+COPY **/*.R /code/
 
 WORKDIR /code/
 
