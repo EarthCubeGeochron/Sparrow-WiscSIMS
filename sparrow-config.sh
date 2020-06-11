@@ -1,6 +1,6 @@
 # Configures environment for WiscSIMS lab
 
-export PROJECT_DIR="${0:h}"
+export PROJECT_DIR="$(dirname "$(readlink -f "$0")")"
 export SPARROW_PATH="$PROJECT_DIR/Sparrow"
 export SPARROW_LAB_NAME="WiscSIMS"
 
