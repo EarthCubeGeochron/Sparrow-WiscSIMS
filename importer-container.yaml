@@ -1,7 +1,5 @@
-version: "3.6"
+version: "3.4"
 services:
   importer:
     #image: r-base
     build: ../importer
-    volumes:
-      - "/Users/macrostrat/Desktop/SIMSdatafiles:/AllTestData"

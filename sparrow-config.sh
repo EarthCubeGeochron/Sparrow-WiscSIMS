@@ -7,6 +7,7 @@ export SPARROW_LAB_NAME="WiscSIMS"
 # Keep volumes for this project separate from those for different labs
 export COMPOSE_PROJECT_NAME="${SPARROW_LAB_NAME}"
 export SPARROW_SECRET_KEY="test"
+export SPARROW_HTTP_PORT=80
 
 export SPARROW_DATA_DIR="${PROJECT_DIR}/Test-Data"
 export SPARROW_COMPOSE_OVERRIDES="-f ${PROJECT_DIR}/importer-container.yaml"

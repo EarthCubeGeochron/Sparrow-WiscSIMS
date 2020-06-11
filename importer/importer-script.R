@@ -1,65 +1,15 @@
 library(jsonlite)
 library(httr)
-library(tidyr)
-library(readxl)
-library(stringr)
 
-source("d18O10SIMSimport.R")
+#source("d18O10SIMSimport.R")
 
 source("SparrowReformater.R")
 
-FileDirectory <- "/Test-Data"
-
-FileDirectory2 <- '/AllTestData/'
-
-#lookfile<-read_excel("/AllTestData/20151005_d18O_Brodie2.xlsx")
-#head(lookfile)
-
-FileList <- as.vector(list.files(path = FileDirectory, pattern = ".xl?", recursive = TRUE))
-FileList2 <- as.vector(list.files(path = FileDirectory2, pattern = ".xl?", recursive = TRUE))
-#FullPath <- FileList
-#FileList <- basename(FileList)
-#FileList <- as.data.frame(FileList)
-#ExcelFileData <- FileList %>% separate(FileList, c("Date", "Isotope", "User"), "_")
-#ExcelFileData$User <- str_remove(ExcelFileData$User, ".xls[x]?")
-#ExcelFileData <- cbind(FullPath, FileList, ExcelFileData)
-
-#for(i in 1:nrow(FileList)){
-
-#FileName <- "/Test-Data/20130917_d13C_Ammonites.xls"
 FileName <- "/Test-Data/20140212_d18O_BenTest.xlsx"
-#FileName <- FileList[i]
-
 #Output = d18O10SIMSimport(FileName)
-#
-#Output <- Output[!is.na(Output$File),]
 
-#### This is the general function below.
+DatumNesting(FileName)
 
-FileList <- as.vector(list.files(path = FileDirectory2, pattern = ".xls$", recursive = TRUE))
-FullPath <- FileList
-FileList <- basename(FileList)
-FileList <- as.data.frame(FileList)
-ExcelFileData <- FileList %>% separate(FileList, c("Date", "Isotope", "User"), "_")
-
-ExcelFileData$User <- str_remove(ExcelFileData$User, ".xls[x]?")
-ExcelFileData <- cbind(FullPath, FileList, ExcelFileData)
-
-ExcelFileDataCulled <- ExcelFileData[ExcelFileData$Isotope=='d18O'|ExcelFileData$Isotope=='d13C',]
-ExcelFileDataCulled <- ExcelFileDataCulled[!is.na(ExcelFileDataCulled$Isotope),]
-
-head(ExcelFileDataCulled)
-for(i in 1:nrow(ExcelFileDataCulled))
-{
-print(paste("Parse and upload ", FileDirectory2,as.character(ExcelFileDataCulled$FullPath[i]), sep=""))
-
-try(DatumNesting(paste(FileDirectory2,as.character(ExcelFileDataCulled$FullPath[i]), sep="")))
-
-}
-
-#}
-#
-#
 # AnalysisFrame <- function(Input){
 #
 #   ####Function to create nested structure from parsed
@@ -175,10 +125,10 @@ try(DatumNesting(paste(FileDirectory2,as.character(ExcelFileDataCulled$FullPath[
 #                                  unit = "permille"))
 #
 #   DatumList <- list(
-#                   d18OVSMOW,#,
-#                   SD2ext,#,
+#                   d18OVSMOW#,
+#                  # SD2ext,
 #                  # IMF,
-#                  d18Omeas#,
+#                  # d18Omeas,
 #                  # SE2int,
 #                  # O16cps,
 #                  # `IP(nA)`,
@@ -262,7 +212,7 @@ try(DatumNesting(paste(FileDirectory2,as.character(ExcelFileDataCulled$FullPath[
 # analysisList <- list()
 #
 # ix <- 1
-# for(i in 1:nrow(Output)){
+# for(i in 10:100){
 #   datumList <- AnalysisFrame(Output[i,])
 #   analysisList[[ix]] <- list(
 #     analysis_name="d18O measurement",
@@ -295,9 +245,9 @@ try(DatumNesting(paste(FileDirectory2,as.character(ExcelFileDataCulled$FullPath[
 #   data=Session
 # )
 #
-# #JSONOUTPUT <- toJSON(request, auto_unbox=TRUE, pretty=TRUE, na="null")
+# JSONOUTPUT <- toJSON(request, auto_unbox=TRUE, pretty=TRUE, na="null")
 #
-# #print(JSONOUTPUT)
+# print(JSONOUTPUT)
 #
 # # PUT(url="http://backend:5000/api/v1/import-data/session", body=request, encode = "json")
 #
