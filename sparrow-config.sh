@@ -13,7 +13,7 @@ export SPARROW_HTTPS_PORT=443
 export SPARROW_BACKUP_DIR="${PROJECT_DIR}/db-backups"
 
 export SPARROW_DATA_DIR="${PROJECT_DIR}/Test-Data"
-export SPARROW_COMPOSE_OVERRIDES="-f ${PROJECT_DIR}/importer-container.yaml"
+export SPARROW_COMPOSE_OVERRIDES="${PROJECT_DIR}/importer-container.yaml"
 export SPARROW_COMMANDS="$PROJECT_DIR/bin"
 export SPARROW_SITE_CONTENT="$PROJECT_DIR/site-content"
 
