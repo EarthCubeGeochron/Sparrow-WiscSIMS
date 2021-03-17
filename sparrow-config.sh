@@ -12,5 +12,6 @@ export SPARROW_DATA_DIR="${PROJECT_DIR}/Test-Data"
 export SPARROW_COMPOSE_OVERRIDES="${PROJECT_DIR}/importer-container.yaml"
 export SPARROW_COMMANDS="$PROJECT_DIR/bin"
 export SPARROW_SITE_CONTENT="$PROJECT_DIR/site-content"
+export SPARROW_ENV="development"
 
 export MAPBOX_API_TOKEN="pk.eyJ1IjoidGhlZmFsbGluZ2R1Y2siLCJhIjoiY2tsOHAzeDZ6MWtsaTJ2cXhpMDAxc3k5biJ9.FUMK57K0UP7PSrTUi3DiFQ"
