@@ -4,4 +4,4 @@ services:
     #image: r-base
     build: ../importer
     volumes:
-      - "/Users/macrostrat/Desktop/SIMSdatafiles:/AllTestData"
+      - "/Users/macrostrat/Desktop/OnlySIMSExcel:/AllTestData"

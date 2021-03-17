@@ -3,10 +3,14 @@ library(httr)
 library(tidyr)
 library(readxl)
 library(stringr)
+library(purrr)
+library(dplyr)
 
 source("d18O10SIMSimport.R")
 
 source("SparrowReformater.R")
+
+possibly_DatumNesting <- possibly(DatumNesting, otherwise = "failed to load")
 
 FileDirectory <- "/Test-Data"
 
@@ -36,7 +40,7 @@ FileName <- "/Test-Data/20140212_d18O_BenTest.xlsx"
 
 #### This is the general function below.
 
-FileList <- as.vector(list.files(path = FileDirectory2, pattern = ".xls$", recursive = TRUE))
+FileList <- as.vector(list.files(path = FileDirectory2, pattern = ".xlsx?$", recursive = TRUE))
 FullPath <- FileList
 FileList <- basename(FileList)
 FileList <- as.data.frame(FileList)
@@ -47,13 +51,15 @@ ExcelFileData <- cbind(FullPath, FileList, ExcelFileData)
 
 ExcelFileDataCulled <- ExcelFileData[ExcelFileData$Isotope=='d18O'|ExcelFileData$Isotope=='d13C',]
 ExcelFileDataCulled <- ExcelFileDataCulled[!is.na(ExcelFileDataCulled$Isotope),]
+UniqueSessions <- ExcelFileDataCulled[!duplicated(ExcelFileDataCulled$Date),]
 
-head(ExcelFileDataCulled)
+print(ExcelFileDataCulled)
 for(i in 1:nrow(ExcelFileDataCulled))
 {
 print(paste("Parse and upload ", FileDirectory2,as.character(ExcelFileDataCulled$FullPath[i]), sep=""))
 
-try(DatumNesting(paste(FileDirectory2,as.character(ExcelFileDataCulled$FullPath[i]), sep="")))
+possibly_DatumNesting(paste(FileDirectory2,as.character(ExcelFileDataCulled$FullPath[i]), sep=""))
+#DatumNesting(paste(FileDirectory2,as.character(ExcelFileDataCulled$FullPath[i]), sep=""))
 
 }
 
