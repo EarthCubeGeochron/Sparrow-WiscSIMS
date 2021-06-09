@@ -1,5 +1,7 @@
 # Configures environment for WiscSIMS lab
 
+#export SPARROW_ENV="development"
+
 export PROJECT_DIR="$SPARROW_CONFIG_DIR"
 export SPARROW_PATH="$PROJECT_DIR/Sparrow"
 export SPARROW_LAB_NAME="WiscSIMS"
